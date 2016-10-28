@@ -93,7 +93,7 @@ module PagerBot::Plugins
       incident = post_incident(
         :service_key => @service[:service_key],
         :event_type => "trigger",
-        :description => query[:subject]
+        :description => query[:subject].presence || "You are being paged by Pagerbot"
       )
 
       log.info "Created incident for #{person.name}. #{incident.inspect}"
